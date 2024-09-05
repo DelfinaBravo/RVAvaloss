@@ -4,28 +4,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity2 extends AppCompatActivity {
     ImageView img;
     TextView tv1, tv2;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        getSupportActionBar().hide();
 
+        // Enlazar vistas
         img = findViewById(R.id.img);
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
 
+        // Obtener los datos pasados desde ModelRecyclerView
         Intent intent = getIntent();
-        String name = intent.getExtras().getString("nombre");
-        String descripcion = intent.getExtras().getString("descripcion");
-        int image = intent.getExtras().getInt("imagen");
+        if (intent != null) {
+            int imageResId = intent.getIntExtra("imagen", -1);
+            String name = intent.getStringExtra("nombre");
+            String description = intent.getStringExtra("descripcion");
 
-        tv1.setText(name);
-        tv2.setText(descripcion);
-        img.setImageResource(image);
-
+            // Asignar los valores a las vistas
+            if (imageResId != -1) {
+                img.setImageResource(imageResId);
+            }
+            tv1.setText(name);
+            tv2.setText(description);
+        }
     }
 }
