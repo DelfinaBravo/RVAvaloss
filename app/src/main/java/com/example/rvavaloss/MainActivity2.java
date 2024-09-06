@@ -8,8 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity2 extends AppCompatActivity {
-    ImageView img;
-    TextView tv1, tv2;
+    ImageView img, img2;
+    TextView tv1, tv2, name;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +17,8 @@ public class MainActivity2 extends AppCompatActivity {
 
         // Enlazar vistas
         img = findViewById(R.id.img);
+        img2 = findViewById(R.id.img2);
+
         tv1 = findViewById(R.id.tv1);
         tv2 = findViewById(R.id.tv2);
 
@@ -30,6 +32,7 @@ public class MainActivity2 extends AppCompatActivity {
             // Asignar los valores a las vistas
             if (imageResId != -1) {
                 img.setImageResource(imageResId);
+                img2.setImageResource(imageResId);
             }
             tv1.setText(name);
             tv2.setText(description);

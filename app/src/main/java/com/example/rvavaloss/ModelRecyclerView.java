@@ -11,12 +11,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ModelRecyclerView extends RecyclerView.Adapter<ModelRecyclerView.ViewHolder> {
 
     Context context;
     ArrayList<Model> arrayList;
+
 
     public ModelRecyclerView(Context context, ArrayList<Model> arrayList) {
         this.context = context;
@@ -41,7 +45,7 @@ public class ModelRecyclerView extends RecyclerView.Adapter<ModelRecyclerView.Vi
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Persona" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Persona" + position, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, MainActivity2.class);
                 intent.putExtra("imagen", arrayList.get(position).getImage());
                 intent.putExtra("nombre", arrayList.get(position).getName());
@@ -66,6 +70,7 @@ public class ModelRecyclerView extends RecyclerView.Adapter<ModelRecyclerView.Vi
             textView1 = itemView.findViewById(R.id.textView);
             textView2 = itemView.findViewById(R.id.textView2);
             cardView = itemView.findViewById(R.id.cardView);
+
         }
     }
 }
